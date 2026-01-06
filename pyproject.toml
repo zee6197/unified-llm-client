@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling>=1.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unified-llm"
+version = "0.1.0"
+description = "Unified async LLM client"
+authors = [{name = "Unified LLM"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.24",
+  "pydantic>=2.0"
+]
+
+[project.urls]
+Homepage = "https://example.com"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/unified_llm"]
