@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import json
-from typing import Any, AsyncIterator, Iterable
+from collections.abc import AsyncIterator, Iterable
+from typing import Any
 
 import httpx
 
@@ -57,12 +58,13 @@ class TogetherProvider(BaseProvider):
         return ChatResponse(provider=self.name, model=req.model, text=text, raw=data)
 
     def stream(self, req: ChatRequest) -> AsyncIterator[StreamEvent]:
-
         async def _gen() -> AsyncIterator[StreamEvent]:
             payload = self._build_payload(req)
             payload["stream"] = True
 
-            async with self._client.stream("POST", _CHAT_PATH, headers=self._headers, json=payload) as response:
+            async with self._client.stream(
+                "POST", _CHAT_PATH, headers=self._headers, json=payload
+            ) as response:
                 if response.status_code >= 400:
                     body = await response.aread()
                     raise ProviderError(

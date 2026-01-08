@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import AsyncIterator
 from dataclasses import dataclass
-from typing import AsyncIterator
 
 from unified_llm.errors import ToolNotAvailableError, UnsupportedFeatureError
 from unified_llm.types import ChatRequest, ChatResponse, StreamEvent

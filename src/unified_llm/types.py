@@ -6,7 +6,6 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-
 ToolMode = Literal["off", "auto", "required"]
 ThinkingMode = Literal["off", "on"]
 
@@ -46,7 +45,7 @@ class ChatResponse(BaseModel):
     model: str
     text: str
     # provider-specific payload kept for debugging or advanced use
-    raw: dict[str, Any]  
+    raw: dict[str, Any]
 
 
 class StreamEvent(BaseModel):

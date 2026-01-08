@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import AsyncIterator
+from collections.abc import AsyncIterator
 
 from unified_llm.errors import UnsupportedFeatureError, UnsupportedProviderError
 from unified_llm.providers.base import BaseProvider, ModelCapabilities, ensure_capabilities

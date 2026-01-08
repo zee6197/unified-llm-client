@@ -1,9 +1,9 @@
 import asyncio
-from collections.abc import AsyncIterator
 import unittest
+from collections.abc import AsyncIterator
 
 from unified_llm.client import LLMClient
-from unified_llm.errors import ToolNotAvailableError, UnsupportedFeatureError
+from unified_llm.errors import ToolNotAvailableError
 from unified_llm.providers.base import BaseProvider, ModelCapabilities, ensure_capabilities
 from unified_llm.types import ChatRequest, ChatResponse, Message, StreamEvent, ToolDef
 
