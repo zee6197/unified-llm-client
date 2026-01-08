@@ -120,3 +120,4 @@ Each provider advertises a list of tool names (or `"*"` for "any tool"). Request
 - `UnsupportedFeatureError`: tools, streaming, or thinking were requested but not supported.
 - `ToolNotAvailableError`: provider does not advertise one or more of the requested tool names.
 - `ProviderError`: HTTP or API errors from a provider (status code included when available).
+# test
