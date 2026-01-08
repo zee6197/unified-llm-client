@@ -35,7 +35,7 @@ class BaseProvider(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    async def stream(self, req: ChatRequest) -> AsyncIterator[StreamEvent]:
+    def stream(self, req: ChatRequest) -> AsyncIterator[StreamEvent]:
         """Yield streaming events for the request."""
         raise NotImplementedError
 

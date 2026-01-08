@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 from collections.abc import AsyncIterator, Iterable
-from typing import Any
+from typing import Any, cast
 
 import httpx
 
@@ -165,7 +165,7 @@ class OpenAIProvider(BaseProvider):
                 response.text or response.reason_phrase,
                 status_code=response.status_code,
             )
-        return response.json()
+        return cast(dict[str, Any], response.json())
 
     @staticmethod
     def _extract_delta_text(event: dict[str, Any]) -> str:

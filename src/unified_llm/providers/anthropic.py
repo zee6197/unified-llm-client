@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import AsyncIterator, Iterable
-from typing import Any
+from typing import Any, cast
 
 import httpx
 
@@ -56,7 +56,7 @@ class AnthropicProvider(BaseProvider):
         text = self._extract_text(data)
         return ChatResponse(provider=self.name, model=req.model, text=text, raw=data)
 
-    async def stream(self, req: ChatRequest) -> AsyncIterator[StreamEvent]:  # type: ignore[override]
+    def stream(self, req: ChatRequest) -> AsyncIterator[StreamEvent]:
         ensure_capabilities(req, self.capabilities(req.model))
         raise UnsupportedFeatureError("streaming")
 
@@ -128,7 +128,7 @@ class AnthropicProvider(BaseProvider):
                 response.text or response.reason_phrase,
                 status_code=response.status_code,
             )
-        return response.json()
+        return cast(dict[str, Any], response.json())
 
     @staticmethod
     def _extract_text(data: dict[str, Any]) -> str:
