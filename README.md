@@ -1,5 +1,7 @@
 # unified-llm
 
+![CI](https://github.com/zee6197/unified_llm/actions/workflows/ci.yml/badge.svg)
+
 A small async Python client that exposes a single interface over a few LLM providers
 (OpenAI, Anthropic/Claude, and Together).
 
@@ -120,3 +122,21 @@ Each provider advertises a list of tool names (or `"*"` for "any tool"). Request
 - `UnsupportedFeatureError`: tools, streaming, or thinking were requested but not supported.
 - `ToolNotAvailableError`: provider does not advertise one or more of the requested tool names.
 - `ProviderError`: HTTP or API errors from a provider (status code included when available).
+
+## Development & Quality
+
+This project uses GitHub Actions to enforce consistent quality and safety checks on every pull request and on `master`.
+
+CI runs the following gates automatically:
+- **Linting** and **formatting** with Ruff
+- **Static type checking** with mypy
+- **Unit tests** with pytest
+- **Test coverage enforcement** (minimum 80%)
+- **Dependency vulnerability scanning** with pip-audit
+
+The `master` branch is protected:
+- Pull requests are required for all changes
+- At least one approval is required
+- All CI checks must pass before merging
+
+Local developer workflows are supported via **pre-commit hooks**, so most issues are caught before code is pushed.
