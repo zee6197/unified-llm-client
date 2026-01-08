@@ -1,6 +1,6 @@
 # unified-llm
 
-![CI](https://github.com/zee6197/unified_llm/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/zee6197/unified_llm/actions/workflows/ci.yml/badge.svg?branch=master)
 
 A small async Python client that exposes a single interface over a few LLM providers
 (OpenAI, Anthropic/Claude, and Together).
