@@ -32,6 +32,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
+      - name: Security audit (pip-audit)
+        if: matrix.python-version == '3.11'
+        continue-on-error: true
+        run: python -m pip_audit
+
       - name: Lint
         run: python -m ruff check .
 
@@ -41,5 +46,5 @@ jobs:
       - name: Type check
         run: python -m mypy src/unified_llm
 
-      - name: Tests
-        run: python -m pytest
+      - name: Tests (with coverage)
+        run: python -m pytest --cov=unified_llm --cov-report=term-missing --cov-fail-under=80
