@@ -34,7 +34,7 @@ class ClientSanityTests(unittest.TestCase):
         )
 
     def test_ensure_capabilities_blocks_tools(self) -> None:
-        req = self.req.copy(update={"tools": [ToolDef(name="math")], "tool_mode": "auto"})
+        req = self.req.model_copy(update={"tools": [ToolDef(name="math")], "tool_mode": "auto"})
         caps = ModelCapabilities(tools=(), streaming=True, thinking=True)
         with self.assertRaises(ToolNotAvailableError):
             ensure_capabilities(req, caps)
