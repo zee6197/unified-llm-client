@@ -29,8 +29,8 @@ dev = [
   "ruff>=0.6",
   "mypy>=1.10",
   "pre-commit>=3.7",
+  "pip-audit>=2.7",
 ]
-
 
 # Pytest configuration
 [tool.pytest.ini_options]
