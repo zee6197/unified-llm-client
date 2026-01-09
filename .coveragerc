@@ -1,3 +1,12 @@
+# Coverage configuration for unified-llm.
+#
+# Excluded provider adapter modules (OpenAI/Anthropic/Together) from the coverage gate
+# because they are network-bound integration surfaces that would require API keys and live
+# HTTP calls. Those are intentionally NOT run in CI.
+#
+# Unit tests focus on the stable, provider-agnostic logic (capability checks, request/response
+# normalization, error mapping, and streaming interface).
+
 [run]
 source = src/unified_llm
 omit =

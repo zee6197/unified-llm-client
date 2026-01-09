@@ -140,4 +140,6 @@ The `master` branch is protected:
 - At least one approval is required
 - All CI checks must pass before merging
 
+Coverage intentionally excludes the provider adapter modules (`providers/openai.py`, `providers/anthropic.py`, `providers/together.py`) because they are network-bound integration surfaces that require API keys and live HTTP calls, which are not run in CI.
+
 Local developer workflows are supported via **pre-commit hooks**, so most issues are caught before code is pushed.
